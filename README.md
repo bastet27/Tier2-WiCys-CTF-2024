@@ -71,6 +71,7 @@ You’ve been summoned to investigate a mysterious web application that has rece
 
 ### Solution
 
+---------------
 ### Notes
 
 ## :four: 4. Web Exploitation(Easy) Notepad Online
@@ -160,7 +161,14 @@ This specific organisation, which I will not disclose yet, hosts a VERY vulnerab
 Click the green "Start Machine" button attached to this task. Once the VM has started, you can access the website from your Attackbox’s Firefox browser using the URL http://MACHINE_IP:3000
 
 ### Solution:
+----
+## :nine: Web Exploitation - IoT(Hard) Exfiltration
 
+### Task Hint:
+Many have attempted to conquer this challenge, exploiting a vulnerability to retrieve the `/etc/passwd` file which was copied to `/www`. Despite this, the flag at `/root/flag.txt` remains out of reach. Each attempt ends in frustration as the connection is mysteriously lost. No one has succeeded so far. Will you be the one to claim the flag?
+
+### Solution:
+-------
 
 ## :one::one: 11. Cryptography (Easy) B4sed
 
@@ -188,4 +196,22 @@ But, with all the stress from the exam, you forgot the decryption key. You remem
 This looks like it is using a Rail Fence Cipher.
 
 Using dCode I was able to solve the flag.
+
+## :one::three: 13. Cryptography [Easy] Exam 2
+
+### Task Hint: 
+Well done!
+You managed to decrypt the message and get the answers. But you were so caught up in the decryption process that you didn't notice your instructor moving around in the classroom. He was behind you, watching you this whole time. He smiled at you and said, "I will see you at the end of the exam."
+Although he admires your creativity, he kindly reminds you that he is a SANS instructor for a reason and quickly decrypts the cipher. "Better luck next time," he says.
+
+The end-of-year exams arrive, and this time, you are confident that no one, not even your SANS instructor, can crack your encryption.
+During the exam, Gonzo sends you the following encrypted message:
+
+FHF{Hfewxyk_mrx_i_u_o_a_t}
+
+Download the encryption script using the AttackBox from this URL `http://<MACINE_IP/math2.py` and determine how to decrypt the message.
+
+### Solution
+
+Taking a look at the encryption script, it looks like it uses a Vigenère Cipher.
 
