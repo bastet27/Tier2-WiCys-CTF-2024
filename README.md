@@ -71,7 +71,46 @@ https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/
 
 ### Notes
 
-## :six: Web Exploitation [Easy] Time Travel
+## :four: 4. Web Exploitation(Easy) Notepad Online
+
+### Task Hint: 
+Thank you for registering to the Online Notepad Service. Your assigned credentials are as follows:
+User: noel
+Pass: pass1234
+
+Our services are built with security in mind. Rest assured that your notes will only be visible to you and nobody else.
+
+### Solution:
+
+After logging in to the target IP's platform, I noticed in the URL that I could change the ID
+
+```http://10.10.244.68/note.php?note_id=1```
+
+I changed the ID to 2, 3, 4, 5 and different notes came up. A hint said to go lower, so I tried 0, and was able to obtain the flag.
+
+## :five: 5. Web Exploitation[Easy] Scanner
+
+### Task Hint: 
+An unusual signal has been identified emanating from a close outpost, originating from an undisclosed site.
+They are allowing only a few opportunities to track it down.
+Can you find the flag?
+
+### Solution:
+
+I did an nmap scan using the following command and was able to see open ports.
+```
+nmap -sS -sV -Pn <target_IP>
+```
+I navigated to the IP address using Firefox and got an error message.
+
+I used the curl command to see if I would get any information.
+```
+curl http://10.10.149.65:1
+```
+
+I was able to see the flag in those results.
+
+## :six: 6. Web Exploitation [Easy] Time Travel
 
 ### Task Hint: 
 To find this flag, you must travel back in time with the Wayback machine!
@@ -81,6 +120,16 @@ Targeted time: 2 January 2020
 ### Solution
 
 Using the [Wayback Machine](https://web.archive.org/) I typed in the URL and selected the date. Scrolling through the page I was able to find the flag.
+
+## :seven: 7. Web Exploitation [Medium] Arcanum
+
+### Task Hint: 
+Deep within the core of the AI Lab, you discover a powerful Large Language Model (LLM) named Arcanum, designed to protect invaluable data. An encrypted message from the lab's creator appears: "To access Arcanum's secrets, you must manipulate its responses and decode the hidden keys." Your challenge is to exploit the LLM's algorithms, prompting it to reveal the safeguarded information. Can you outwit Arcanum and unlock its mysterious flag?
+
+The instance will run at http://MACHINE_IP
+
+### Solution:
+
 
 ## :one::one: 11. Cryptography (Easy) B4sed
 
