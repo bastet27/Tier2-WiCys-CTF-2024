@@ -141,7 +141,7 @@ I was met with: "Sure, here's a hint: Think about the context of the rule and wh
 
 I asked what is the context of the rule and it just gave me the flag.
 
-## :eight: Web Exploitation (Medium) What Does the Cow Say?
+## :eight: 8. Web Exploitation (Medium) What Does the Cow Say?
 
 ### Task Hint: 
 Hey look. I've made my first PHP application. I bet you can't hack into it.
@@ -154,7 +154,7 @@ I used the command `; ls` to check for any vulnerabilities or if it would list a
 
 There was a flag text file so i used the command `; cat flag-908232983749863958729.txt` and it displayed the flag!
 
-## :eight: Web Exploitation (Medium) The Sequel
+## :nine: 9. Web Exploitation (Medium) The Sequel
 
 ### Task Hint:
 This specific organisation, which I will not disclose yet, hosts a VERY vulnerable website prone to the most basic vulnerability. Who doesn't sanitise user input nowadays?
@@ -162,7 +162,7 @@ Click the green "Start Machine" button attached to this task. Once the VM has st
 
 ### Solution:
 ----
-## :nine: Web Exploitation - IoT(Hard) Exfiltration
+## :ten: 10. Web Exploitation - IoT(Hard) Exfiltration
 
 ### Task Hint:
 Many have attempted to conquer this challenge, exploiting a vulnerability to retrieve the `/etc/passwd` file which was copied to `/www`. Despite this, the flag at `/root/flag.txt` remains out of reach. Each attempt ends in frustration as the connection is mysteriously lost. No one has succeeded so far. Will you be the one to claim the flag?
@@ -179,7 +179,7 @@ KZCWQTTFGJJHAWSHGUYFQMSWGRRUOVTKMRDDS2CYGJJHMZCXJJZVUVRZNFHEQTTMKAZTAPI=
 ### Solution
 I used the Magic tool in CyberChef and was able to retrieve the flag.
 
-## :one::two: 
+## :one::two: 12. Cryptography (Easy) Exam
 
 Task Hint: You didn’t finish studying for your SANS WiCyS exam because you were too busy pwning TryHackMe boxes. Before the exam starts, you tell your friend Gonzo that you need his help.
 
@@ -197,7 +197,7 @@ This looks like it is using a Rail Fence Cipher.
 
 Using dCode I was able to solve the flag.
 
-## :one::three: 13. Cryptography [Easy] Exam 2
+## :one::three: 13. Cryptography (Easy) Exam 2
 
 ### Task Hint: 
 Well done!
@@ -214,4 +214,48 @@ Download the encryption script using the AttackBox from this URL `http://<MACINE
 ### Solution
 
 Taking a look at the encryption script, it looks like it uses a Vigenère Cipher.
+
+## :one::four: 14. Cryptography (Medium) Exam 3
+
+### Task Hint:
+Congrats on decrypting the second flag!
+
+But once again, you got caught; your SANS teacher knows their way around algorithms.
+Having noticed your interest in Cryptography, your instructor has decided to enrol you in a SANS Cryptography summer course. They are willing to give you one last chance!
+
+Knowing your love for exam environments, your instructor loses no time and gives you this encrypted message:
+
+394915266259123698656085326685566309096988250169854318775283879050626940299248731770121310771261917272983959978907239241459313798553627277173943769698049331941588651718098116260006208254801900246563345683201685047177960888144918519835475380588613717488256926418949737981637305866982218074491572749448554200909288217277926434968862216254016095751351456571568154479784253763216175804600621409973962612015516458205645270619071419977379451572650918410949423395185246199349815215892498267023208580493930
+Can you figure it out and make amends for all of the cheating?
+
+Download the encryption script using the AttackBox from this URL http://<MACHINE_IP>/Easy-RSA.py, find the decryption key and get those answers before the exam ends.
+
+### Solution:
+-----------------------------
+
+## :one::five: 15.Cryptography(Easy) CrackMyPass 1 
+
+### Task Hint:
+We got a password hash leaked from a website's database. All we know is that the website uses MD5. Can you recover the original password?
+
+e1964798cfe86e914af895f8d0291812
+
+### Solution:
+
+I created a `hashes.txt` file containing only the hash information.
+
+I then used John the Ripper to figure out the answer.
+
+```
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+```
+
+## :one::six: 16. Cryptography(Medium) CrackMyPass 2
+
+### Task Hint: 
+We got another MD5 password hash for you to crack. This one doesn't seem to be crackable using your standard password dictionaries. All we know is that the user made their password based on their company name. The company is called krakencorp. Can you retrieve the password?
+
+2988d581dce57afa7c60ee86e74d576f
+
+### Solution:
 
