@@ -15,7 +15,7 @@ I will be using the AttackBox built in to THM.
 
 ## :two: 2. Web Exploitation(Easy) Bruteforce Me
 
-### Level Hint: I forgot my credentials yet again... Can you guess them for me? I think my user was either pedro, admin or root.
+### Task Hint: I forgot my credentials yet again... Can you guess them for me? I think my user was either pedro, admin or root.
 
 ### Solution:
 
@@ -64,3 +64,48 @@ This one was suprisingly more difficult than I thought, and it was just the firs
 https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/
 
 ## :three: 3. Web Exploitation(Easy) Endpoint
+
+### Task Hint: You’ve been summoned to investigate a mysterious web application that has recently come under scrutiny. Rumors circulate about hidden messages and secrets concealed within the app’s architecture. As a seasoned investigator, your mission is to navigate the web application, searching for clues embedded in its responses.
+
+### Solution
+
+### Notes
+
+## :six: Web Exploitation [Easy] Time Travel
+
+### Task Hint: 
+To find this flag, you must travel back in time with the Wayback machine!
+Targeted website: https://www.embeddedhacker.com
+Targeted time: 2 January 2020
+
+### Solution
+
+Using the [Wayback Machine](https://web.archive.org/) I typed in the URL and selected the date. Scrolling through the page I was able to find the flag.
+
+## :one::one: 11. Cryptography (Easy) B4sed
+
+### Task Hint: Can you decode this?
+
+KZCWQTTFGJJHAWSHGUYFQMSWGRRUOVTKMRDDS2CYGJJHMZCXJJZVUVRZNFHEQTTMKAZTAPI=
+
+### Solution
+I used the Magic tool in CyberChef and was able to retrieve the flag.
+
+## :one::two: 
+
+Task Hint: You didn’t finish studying for your SANS WiCyS exam because you were too busy pwning TryHackMe boxes. Before the exam starts, you tell your friend Gonzo that you need his help.
+
+Quick on his feet, Gonzo devises a genius plan: He will encrypt a message and send it to you. That way, if you get caught, the teacher will have no proof you’re cheating. Genius!
+
+During the exam,  Gonzo notices your distress signal and sends you this message:
+
+TAe1a_H{nwr_c2_c4}Mss_3b
+
+But, with all the stress from the exam, you forgot the decryption key. You remember Gonzo mentioning a rail. Can you figure it out before time runs out?
+
+### Solution
+
+This looks like it is using a Rail Fence Cipher.
+
+Using dCode I was able to solve the flag.
+
