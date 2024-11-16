@@ -71,8 +71,9 @@ You’ve been summoned to investigate a mysterious web application that has rece
 
 ### Solution
 
----------------
 ### Notes
+
+#### Skipped
 
 ## :four: 4. Web Exploitation(Easy) Notepad Online
 
@@ -161,14 +162,17 @@ This specific organisation, which I will not disclose yet, hosts a VERY vulnerab
 Click the green "Start Machine" button attached to this task. Once the VM has started, you can access the website from your Attackbox’s Firefox browser using the URL http://MACHINE_IP:3000
 
 ### Solution:
-----
+
+#### Skipped
+
 ## :one::zero: 10. Web Exploitation - IoT(Hard) Exfiltration
 
 ### Task Hint:
 Many have attempted to conquer this challenge, exploiting a vulnerability to retrieve the `/etc/passwd` file which was copied to `/www`. Despite this, the flag at `/root/flag.txt` remains out of reach. Each attempt ends in frustration as the connection is mysteriously lost. No one has succeeded so far. Will you be the one to claim the flag?
 
 ### Solution:
--------
+
+#### Skipped
 
 ## :one::one: 11. Cryptography (Easy) B4sed
 
@@ -231,7 +235,8 @@ Can you figure it out and make amends for all of the cheating?
 Download the encryption script using the AttackBox from this URL http://<MACHINE_IP>/Easy-RSA.py, find the decryption key and get those answers before the exam ends.
 
 ### Solution:
------------------------------
+
+#### Skipped
 
 ## :one::five: 15.Cryptography(Easy) CrackMyPass 1 
 
@@ -258,7 +263,8 @@ We got another MD5 password hash for you to crack. This one doesn't seem to be c
 2988d581dce57afa7c60ee86e74d576f
 
 ### Solution:
----------------------------
+
+#### Skipped
 
 ## :one::seven: 17. Cryptography(Hard) CrackMyPass 3
 
@@ -270,7 +276,8 @@ We also know the password is made by concatenating two colours together (i.e. re
 `3c1b2fd3df73a40c82d085b477d01118cb4ce2f5`
 
 ### Solution:
---------------------------
+
+#### Skipped
 
 ## :one::eight: 18. Forensics (Easy) Eggciting Recovery
 
@@ -339,6 +346,7 @@ The Macro Code:
  c. Has a Base64-encoded Powershell payload 
 
 I copied the Base64-encoded payload string and used [Base64 Decode](https://www.base64decode.org) and was able to find the flag.
+
 
 
 
