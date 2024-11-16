@@ -162,7 +162,7 @@ Click the green "Start Machine" button attached to this task. Once the VM has st
 
 ### Solution:
 ----
-## :ten: 10. Web Exploitation - IoT(Hard) Exfiltration
+## :one::zero: 10. Web Exploitation - IoT(Hard) Exfiltration
 
 ### Task Hint:
 Many have attempted to conquer this challenge, exploiting a vulnerability to retrieve the `/etc/passwd` file which was copied to `/www`. Despite this, the flag at `/root/flag.txt` remains out of reach. Each attempt ends in frustration as the connection is mysteriously lost. No one has succeeded so far. Will you be the one to claim the flag?
@@ -258,4 +258,87 @@ We got another MD5 password hash for you to crack. This one doesn't seem to be c
 2988d581dce57afa7c60ee86e74d576f
 
 ### Solution:
+---------------------------
+
+## :one::seven: 17. Cryptography(Hard) CrackMyPass 3
+
+### Task Hint:
+This is the last hash we got. We are not sure of the specific algorithm in use here; all we know is that it isn't MD5, but I'm sure you'll figure it out. 
+
+We also know the password is made by concatenating two colours together (i.e. redblue or greenblack). Can you recover it? 
+
+`3c1b2fd3df73a40c82d085b477d01118cb4ce2f5`
+
+### Solution:
+--------------------------
+
+## :one::eight: 18. Forensics (Easy) Eggciting Recovery
+
+### Task Hint:
+Robbie’s file was corrupted. Can you help him restore the file?
+
+Note: The artefact is stored in the Desktop directory.
+
+### Solution:
+I first inspected the filetype. I used the command `file egg.png`. The output stated it was data.
+
+I tried to open the file, it said it was corrupted.
+
+I used `xxd` to analyze the file's hexadecimal content. 
+```
+xxd egg.png | head
+```
+The file contained the incorrect header, `EGGY` instead of a valid PNG header.
+
+I replaced the header using this command:
+```
+printf '\x89PNG\r\n\x1a\n' | dd of=egg.png bs=1 conv=notrunc
+```
+
+The file then was no longer corrupted. I opened the image and it was a QR code with the flag.
+
+### Notes: 
+Tools Used
+xxd: For analyzing and editing the hexadecimal structure of the file.
+dd: To overwrite the file's header.
+file: To identify file types.
+
+## :one::nine: 19. Forensics(Easy) FooTPrints
+
+### Task Hint:
+An alert was triggered saying that unusual authentication was detected on one of the file servers. Luckily, you have a packet capture available. Can you investigate the packet capture and analyse the activity?
+
+Note: The artefact is stored in the Desktop directory.
+
+### Solution:
+
+A file on the desktop was a pcap file.
+
+I opened wireshark and looked through the files. I filtered for `ftp` and was able to find the flag.
+
+### Notes:
+Tools Used:
+Wireshark: To filter and analyze FTP traffic.
+
+## :two::zero: 20. Forensics(Easy) Maldoom's Revenge
+
+### Task Hint:
+Lexie, a Recruitment Specialist, received an unusual resume from a candidate applying for one of the job openings. Can you assist her in checking the application file?
+
+
+Note: The artefact is stored in the Desktop directory.
+
+### Solution:
+I opened the document in Word. To be honest, I was stumped. I looked through the Slack channels for any hints and was able to find that "macros" was a hint.
+
+I enabled the Developer tab in Word and looked at the Macros. There was one labeled "doom"
+
+The Macro Code:
+ a. Executes automatically when the document is opened
+ b. Provides a warning message to the user
+ c. Has a Base64-encoded Powershell payload 
+
+I copied the Base64-encoded payload string and used [Base64 Decode](https://www.base64decode.org) and was able to find the flag.
+
+
 
