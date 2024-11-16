@@ -389,4 +389,67 @@ Note: The artefact is stored in the Desktop directory.
 
 ### Notes:
 
+#### Skipped
 
+## :two::four: 24. Forensics(Medium) Stolen FooTPrints
+
+### Task Hint:
+After authenticating to the file server, the attacker stole a file. Can you investigate and see what was stolen?
+
+Note: The artefact is stored in the Desktop directory.
+### Solution:
+
+Open the provided PCAP file in Wireshark.
+Filter packets using ftp and follow the TCP stream to locate the commands listing directories and transferring the file memories.png.
+Switch to the ftp-data filter to isolate packets corresponding to file transfers.
+Identify the largest file transfer by examining packet sizes in the ftp-data stream.
+Follow the TCP stream for the largest ftp-data transfer and export it as raw binary data, saving it as memories.png.
+Use strings memories.png | grep "THM{" to search for hidden flags in the file.
+Open the image with xdg-open memories.png to visually inspect for the flag.
+
+### Notes:
+Tools Used:
+Wireshark: To analyze the PCAP file, apply filters (ftp, ftp-data), and follow TCP streams.
+Strings: To extract human-readable text from the binary file.
+grep: To filter strings and search for the flag pattern.
+xdg-open: To visually inspect the exported image.
+
+## :two::five: 25. Forensics(Hard) Mayhem
+
+### Task Hint:
+
+Beneath the tempest's roar, a quiet grace,
+Mayhem's beauty in a h﻿idden place.
+Within the chaos, a paradox unfolds,
+A tale of beauty, in disorder it molds.
+
+Download the zip file from your Attackbox with:
+wget http://10.10.133.71/evidence.zip
+
+Extract the zip file's contents and begin your analysis in order to answer the questions.
+
+### Solution:
+
+#### Questions:
+What is the AES Key and IV? Format is AES:IV
+
+The attacker printed a flag for us to see. What is that flag?
+
+What is the final flag found inside important file the attacker found?
+
+### Notes:
+Tools Used:
+
+#### Skipped
+
+## :two::six: 26. OSINT(Easy TryFindMe
+
+### Task Hint:
+Can you find where this photo was taken?
+You can download the file using the AttackBox from this URL http://10.10.133.71/surfsup.jpg.
+Answer format: No capital letters, underscore to separate words, and wrapped in THM{}.
+For example, If the beach is Venice Beach, the answer would be THM{venice_beach}
+
+### Solution:
+
+### Notes:
