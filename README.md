@@ -347,6 +347,46 @@ The Macro Code:
 
 I copied the Base64-encoded payload string and used [Base64 Decode](https://www.base64decode.org) and was able to find the flag.
 
+## :two::one: 21. Forensics(Easy) Phishy
 
+### Task Hint:
+
+Julianne returned from her vacation feeling relaxed and refreshed, only to be greeted by numerous emails waiting for her at work. As she sifted through them, one email stood out with a strange subject line and an unfamiliar sender, making her pause and wonder what it was about.
+Can you dissect the email and retrieve the flag?
+Note: The artefact is stored in the Desktop directory.
+
+### Solution:
+
+I used the following command to find the flag. Surprisingly was easier than expected.
+```
+grep "THM{" "Password Expired - Action Alert.eml"
+```
+
+### Notes:
+Tools Used
+grep: Command-line tool used to search for specific patterns within text files.
+
+## :two::two: Forensics (Medium) Chat Bubble
+
+### Task Hint:
+My friend sent me this important file, but I can't open it. They said they were unsure of the file type.
+Can you help me?
+
+You can download the file from the AttackBox terminal with wget http://10.10.133.71/ChatBubble.png
+
+### Solution:
+
+#### Skipped
+
+## :two::three: 23. Forensics (Medium) DiNoSaur Tunnel
+
+### Task Hint:
+The attackers found a way to create a tunnel as big as a dinosaur, allowing them to exfiltrate vast amounts of data from our network without detection.
+Can you investigate the incident and determine what was stolen?
+Note: The artefact is stored in the Desktop directory.
+
+### Solution:
+
+### Notes:
 
 
