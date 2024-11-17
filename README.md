@@ -541,3 +541,45 @@ I found the third person's GitHub page but took a pause because I could not find
 ### Solution:
 
 ### Notes:
+
+#### Skipped
+
+## :three::one: 31. Linux Command Line(Easy) Archives
+
+### Task Hint:
+Someone played a prank by hiding confidential data within multiple layers of archives and scrambling its filename, leaving Anna frustrated as she tried to piece it back together. Can you help Anna restore the confidential data? 
+### Solution:
+
+Artefact is stored in the desktop directory.
+
+Changed to desktop directory by `cd Desktop`
+
+Used `file first_part` to see the filetype
+
+Used `unzip first_part`
+
+Used `file second_part`
+
+Used `tar -xvf second_part`
+
+Used `file third_part`
+
+Used `gunzip third_part`
+Received error message, wrong suffix.
+
+Used `gunzip -c third_part > fourth_part`
+
+Used `file fourth_part`
+
+It was a PDF file so I just opened it and the flag was at the bottom.
+
+### Notes:
+`cd` – Navigate directories.
+`ls` – List files.
+`unzip` – Extract ZIP files.
+`tar -xvf` – Extract tar archives.
+`file` – Identify file types.
+`gunzip` – Decompress GZIP files.
+`unxz` – Decompress XZ files.
+`mv` – Rename files.
+
