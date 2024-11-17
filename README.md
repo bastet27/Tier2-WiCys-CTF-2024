@@ -452,4 +452,92 @@ For example, If the beach is Venice Beach, the answer would be THM{venice_beach}
 
 ### Solution:
 
+I used exiftool but did not find any GPS metadata.
+
+I used google reverse image search and was able to find the answer.
+
+### Notes:
+
+## :two::seven: 27. OSINT(Easy) Operation Slither 1
+
+### Task Hint:
+Full user database TryTelecomMe on sale!!!
+As part of Operation Slither, we've been hiding for weeks in their network and have now started to exfiltrate information. This is just the beginning. We'll be releasing more data soon. Stay tuned!
+@v3n0mbyt3_
+---
+Find any information related to the leader of the Sneaky Viper group.
+
+### Solution:
+
+I googled the username provided and was able to find a Threads account. I looekd through their posts and replies and found an encoded message.
+
+I used CyberChef Magic tool to decode the message and obtain the flag.
+
+### Notes:
+Tools Used:
+OSINT
+CyberChef
+
+## :two::eight: OSINT(Easy) Operation Slither 2
+
+### Task Hint:
+ ----
+|   v3n0mbyt3 Wrote:
+|   
+|   Full user database TryTelecomMe on sale!!!
+|   
+|   As part of Operation Slither, we've been hiding for weeks in their network and have now started to exfiltrate information.
+|   This is just the beginning. We'll be releasing more data soon. Stay tuned!
+|  
+|   @v3n0mbyt3_
+ ----
+60GB of data owned by TryTelecomMe is now up for bidding!
+Number of users: 64500000
+Accepting all types of crypto
+For takers, send your bid on Threads via this handle:
+
+HIDDEN CONTENT
+-----------------------------------------------------------------------------------------------------
+You must register or log in to view this content
+            
+Follow the crumbs from the first challenge and hunt any information related to the second operator of the group.
+
+### Solution:
+
+In the first Operation Slither Task, I was able to find the second operator. I was a bit stuck on trying to find other accounts for them. I ended up using the bing search engine and was able to find a SoundCloud playlist page. I looked through the different URL's for each song and in one of the songs descriptions was another encoded message.
+
+### Notes:
+
+## :two:nine: 29. OSINT(Medium) Operation Slither 3
+
+### Task Hint:
+FOR SALE
+Advanced automation scripts for phishing and initial access!
+Inclusions:
+- Terraform scripts for a resilient phishing infrastructure 
+- Updated Google Phishlet (evilginx v3.0)
+- GoPhish automation scripts
+- Google MFA bypass script
+- Google account enumerator
+- Automated Google brute-forcing script
+- Cobalt Strike aggressor scripts
+- SentinelOne, CrowdStrike, Cortex XDR bypass payloads
+PRICE: $1500
+Accepting all types of crypto
+Contact me on REDACTED@protonmail.com 
+---      
+Hunt the third operator using past discoveries and find any details related to the infrastructure used for the attack.
+
+### Solution:
+
+I found the third person's GitHub page but took a pause because I could not find the flag.
+
+### Notes:
+
+## :three::zero: 30. Linux Command Line(Easy) Get That Flag Out
+
+### Task Hint:
+
+### Solution:
+
 ### Notes:
