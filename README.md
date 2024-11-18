@@ -264,7 +264,58 @@ We got another MD5 password hash for you to crack. This one doesn't seem to be c
 
 ### Solution:
 
-#### Skipped
+I wasn't able to get hashcat working for this one, so I created a Python script. The password is related to "krakencorp" and variations might include substitutions, capitalization, or special characters.
+
+Tried variations like:
+ - `krakencorp123`
+ - `Krakencorp!`
+ - `krak3ncorp`
+
+Python Script:
+
+```
+import hashlib
+
+# Known hash
+target_hash = "2988d581dce57afa7c60ee86e74d576f"
+
+# Base word
+base_word = "krakencorp"
+
+# Characters to append or substitute
+suffixes = ["", "123", "!", "2024", "@", "1", "2"]
+substitutions = {"a": "@", "o": "0", "e": "3"}
+
+# Generate complex transformations
+complex_transformations = set()
+
+# Basic and substituted variations
+for key, value in substitutions.items():
+    complex_transformations.add(base_word.replace(key, value))
+    complex_transformations.add(base_word.replace(key, value).upper())
+    complex_transformations.add(base_word.replace(key, value).capitalize())
+
+# Add suffixes
+for suffix in suffixes:
+    for word in [base_word, base_word.upper(), base_word.capitalize()]:
+        complex_transformations.add(word + suffix)
+        for key, value in substitutions.items():
+            complex_transformations.add(word.replace(key, value) + suffix)
+
+# Test each transformation
+password_found = None
+for word in complex_transformations:
+    hashed_word = hashlib.md5(word.encode()).hexdigest()
+    if hashed_word == target_hash:
+        password_found = word
+        break
+
+# Output the result
+if password_found:
+    print(f"Password found: {password_found}")
+else:
+    print("Password not found.")
+```
 
 ## :one::seven: 17. Cryptography(Hard) CrackMyPass 3
 
