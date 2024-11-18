@@ -530,7 +530,9 @@ Hunt the third operator using past discoveries and find any details related to t
 
 ### Solution:
 
-I found the third person's GitHub page but took a pause because I could not find the flag.
+I found the third person's GitHub page. Since I'm learning about GitHub to do write-ups anyway, I figured this would be good practice.
+
+I looked at the repo that the user posted and looked through changes in the commit history. I looked at the gitignore list and was able to find the repository that was ignored AND removed and found the password. This one took some time!
 
 ### Notes:
 
