@@ -328,8 +328,54 @@ We also know the password is made by concatenating two colours together (i.e. re
 
 ### Solution:
 
-#### Skipped
+This one was a bit more difficult. The password was a SHA-1 hash. I was having a hard time finding a wordlist that worked, but I found [this one](https://gist.github.com/mordka/c65affdefccb7264efff77b836b5e717)
 
+I created a Python code to try some combinations.
+
+```
+import hashlib
+from itertools import permutations
+
+# Target hash
+target_hash = "3c1b2fd3df73a40c82d085b477d01118cb4ce2f5"
+
+# List of standard and eccentric colors
+colors = [
+    "red", "blue", "green", "yellow", "orange", "purple", "pink", "cyan",
+    "magenta", "black", "white", "gray", "teal", "indigo", "violet", "gold",
+    "silver", "lime", "maroon", "navy", "brown", "beige", "turquoise", "peach",
+    "amber", "emerald", "charcoal", "coral", "crimson", "lavender", "mint",
+    "plum", "ruby", "sapphire", "tan", "alizarin", "amaranth", "apricot",
+    "cerulean", "chartreuse", "fuchsia", "taupe", "pearl", "periwinkle",
+    "cinnamon", "cobalt", "emeraldgreen", "royalblue", "blush", "denim",
+    "jetblack", "limegreen", "midnightblue", "pumpkin", "chocolate"
+]
+
+# Generate all 2-color combinations
+combinations = [''.join(p) for p in permutations(colors, 2)]
+
+# Test each combination
+password_found = None
+for combo in combinations:
+    hashed_combo = hashlib.sha1(combo.encode()).hexdigest()
+    if hashed_combo == target_hash:
+        password_found = combo
+        break
+
+# Output the result
+if password_found:
+    print(f"Password found: {password_found}")
+else:
+    print("Password not found.")
+```
+
+### Notes:
+Tools Used:
+- Python: To automate hash testing and password generation.
+- hashlib: Used for SHA-1 hashing.
+- itertools.permutations: Generated all two-color combinations.
+- Color List: Included standard and eccentric color names.
+- 
 ## :one::eight: 18. Forensics (Easy) Eggciting Recovery
 
 ### Task Hint:
