@@ -280,7 +280,37 @@ Download the encryption script using the AttackBox from this URL http://<MACHINE
 
 ### Solution:
 
-#### Skipped
+The encryption script included the ciphertext, the modulus (n), and the public exponent (e = 65537). To decrypt the ciphertext, I needed to compute the private key (d) and retrieve the plaintext flag.
+
+I reviewed the encryption script, which revealed:
+
+- The ciphertext (C) was the encrypted flag.
+- The modulus (n) was the product of two prime numbers, p and q.
+- The public exponent (e) was set to 65537.
+- The private key (d) required for decryption is calculated using the formula:
+d = inverse(e, phi(n))
+where: phi(n) = (p - 1) * (q - 1)
+
+To proceed, I needed to factorize n to obtain p and q.
+
+I visited [FactorDB](https://factordb.com/).
+I entered the value of n from the encryption script.
+FactorDB returned the following results:
+p = 15485863
+q = a large prime number provided by FactorDB.
+These values were necessary to calculate phi(n).
+
+Using the values of n, e, p, and q, I performed the decryption on [dCode’s RSA tool](https://www.dcode.fr/rsa-cipher):
+
+- I entered the ciphertext (C), modulus (n), and public exponent (e = 65537).
+- I also input the prime factors (p and q) obtained from FactorDB.
+- I left the private key (d) and phi(n) fields blank since dCode calculates them automatically.
+- I selected the option to display the plaintext as a character string.
+
+The decryption showed on the left side of dCode.
+
+### Notes:
+Tools Used:
 
 ## :one::five: 15.Cryptography(Easy) CrackMyPass 1 
 
