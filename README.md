@@ -311,6 +311,10 @@ The decryption showed on the left side of dCode.
 
 ### Notes:
 Tools Used:
+FactorDB: Used to factorize n and retrieve the prime factors (p and q).
+Website: 
+dCode RSA Tool: Used to calculate phi(n), the private key (d), and decrypt the ciphertext.
+Website:
 
 ## :one::five: 15.Cryptography(Easy) CrackMyPass 1 
 
@@ -547,9 +551,52 @@ You can download the file from the AttackBox terminal with wget http://10.10.133
 
 ### Solution:
 
-#### Skipped
+The first part was found in plaintext inside the PDF.
+The second part was hidden in an embedded PNG file within the PDF.
 
-## :two::three: 23. Forensics (Medium) DiNoSaur Tunnel
+I started by analyzing the file using the file command:
+```
+file ChatBubble.png
+```
+```
+ChatBubble.png: PDF document, version 1.4
+```
+
+I opened the now-PDF file to find the first half of the flag.
+
+Next, I used binwalk to identify embedded objects:
+```
+binwalk ChatBubble.pdf
+```
+Output showed several Zlib-compressed streams and an embedded PNG image at offset 0x4197.
+
+To extract the embedded objects:
+```
+binwalk -e ChatBubble.pdf
+```
+
+The extraction created a directory `_ChatBubble.pdf.extracted`. Inside, I decompressed the Zlib streams and inspected the contents using `strings`. However, no flag was found in these files.
+
+Since the PNG wasn’t automatically extracted, I used dd to manually extract it:
+
+```dd if=ChatBubble.pdf of=4197.png bs=1 skip=16791
+```
+This created a file named 4197.png.
+
+After confirming the file was a valid PNG using file, I opened it:
+```
+xdg-open 4197.png
+```
+
+### Notes:
+Tools Used:
+file – To determine the file type.
+binwalk – To analyze and extract embedded objects.
+dd – To manually extract the PNG file.
+xdg-open – To view the PNG file.
+strings – To inspect decompressed Zlib streams.
+
+`## :two::three: 23. Forensics (Medium) DiNoSaur Tunnel
 
 ### Task Hint:
 The attackers found a way to create a tunnel as big as a dinosaur, allowing them to exfiltrate vast amounts of data from our network without detection.
