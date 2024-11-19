@@ -185,7 +185,29 @@ Click the green "Start Machine" button attached to this task. Once the VM has st
 
 ### Solution:
 
-#### Skipped
+This one took me awhile to do. 
+
+Navigated to http://target_IP:3000/
+
+Opened browser developer tools (Ctrl+Shift+I) to inspect the login page.
+Analyzed the structure and source for potential vulnerabilities.
+Found Path to Home Page
+
+There was a Bill section where I could enter in a reference number.
+
+
+Tested the input fields using basic SQL injection payloads to check for vulnerabilities.
+Enumerated rows in the database using:
+```
+0 UNION SELECT 1,2,group_concat(table_name) FROM information_schema.tables WHERE table_schema=DATABASE()
+```
+Confirmed the existence of tables like flag.
+
+Successfully extracted the flag using the following SQL injection payload:
+
+```
+0 UNION SELECT 1,2,$flag FROM flag WHERE $flag LIKE 'THM{%'
+```
 
 ## :one::zero: 10. Web Exploitation - IoT(Hard) Exfiltration
 
