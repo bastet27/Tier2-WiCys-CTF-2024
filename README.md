@@ -783,12 +783,37 @@ I looked at the repo that the user posted and looked through changes in the comm
 ## :three::zero: 30. Linux Command Line(Easy) Get That Flag Out
 
 ### Task Hint:
+Johnny got annoyed by running OpenVPN with root privileges and thought configuring the application with the SUID bit set was a good idea. Can you prove to him that it is dangerous to do that?
+Abuse the misconfiguration set to the /home/johnny/openvpn binary and retrieve the flag in /root/flag.txt.
+Username	johnny
+Password	itadmin123
+IP	10.10.97.91
 
 ### Solution:
 
-### Notes:
+SSH into the machine as johnny.
 
-#### Skipped
+I listed the permissions of /home/johnny/openvpn to confirm that the SUID bit was set, allowing the binary to execute with root privileges:
+```
+ls -l /home/johnny/openvpn
+```
+Output:
+```
+-rwsr-sr-x 1 root root 801224 Aug 25 17:50 /home/johnny/openvpn
+```
+The presence of s in the permission string indicates the SUID bit is set.
+
+Knowing OpenVPN often has options to read configuration files, I checked for a way to abuse the SUID bit by making it read the /root/flag.txt file.
+
+Using the --config option of OpenVPN, I provided the path to /root/flag.txt as an argument. Since the binary runs with root privileges, it could read the file even though my user account did not have access:
+```
+/home/johnny/openvpn --config /root/flag.txt
+```
+
+### Notes:
+SUID Binary Misconfiguration: Setting the SUID bit on binaries like OpenVPN can lead to privilege escalation if the application has functionality to read or execute files, as it inherits root permissions during execution.
+Single Command Escalation: The ability to access sensitive files like `/root/flag.txt` without complex steps demonstrates why caution is necessary when using the SUID bit.
+
 
 ## :three::one: 31. Linux Command Line(Easy) Archives
 
