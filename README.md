@@ -71,9 +71,31 @@ You’ve been summoned to investigate a mysterious web application that has rece
 
 ### Solution
 
-### Notes
+I struggled with this one for a bit. I navigated to the target IP in Firefox and it was a blank page. I tried `target_IP/admin` and was able to find a blank directory.
 
-#### Skipped
+I decided to use gobuster to look for more directories.
+```
+gobuster dir -u http://10.10.222.134/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+```
+
+Gobuster identified the following directories:
+```
+/admin                (Status: 301)
+/test                 (Status: 301)
+/source               (Status: 301)
+/dev                  (Status: 301)
+/prod                 (Status: 301)
+/secret               (Status: 301)
+/debug                (Status: 301)
+/debugger             (Status: 301)
+/server-status        (Status: 403)
+```
+
+I tried each one and was able to find the flag in one of the directories.
+
+### Notes
+Tools Used:
+Gobuster - Directory and file enumeration.
 
 ## :four: 4. Web Exploitation(Easy) Notepad Online
 
