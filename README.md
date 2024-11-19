@@ -605,9 +605,35 @@ Note: The artefact is stored in the Desktop directory.
 
 ### Solution:
 
+Used tshark to extract all DNS query names from the dinosaur.pcapng file:
+```
+tshark -r dinosaur.pcapng -Y "dns" -T fields -e dns.qry.name | uniq
+```
+
+Since the exfiltrated data was embedded in DNS query names, I isolated the first part (before the domain name) using cut:
+```
+tshark -r dinosaur.pcapng -Y "dns" -T fields -e dns.qry.name | uniq | cut -d. -f1
+```
+The extracted data was in hexadecimal format. To convert it to binary, I used xxd:
+
+```
+tshark -r dinosaur.pcapng -Y "dns" -T fields -e dns.qry.name | uniq | cut -d. -f1 | xxd -r -p > fixed_data
+```
+
 ### Notes:
 
-#### Skipped
+
+Tools Used:
+Tshark: For packet capture analysis and extracting DNS query data.
+Cut: To extract specific fields from the DNS query strings.
+Xxd: To convert hexadecimal data back into binary.
+File: To identify the type of the extracted file.
+Xdg-open: To open and view the PDF.
+Linux CLI: For all commands and file manipulation.
+
+Referenced YouTube Video:
+[DNS Tunneling Explained: Threats & Detection](https://www.youtube.com/watch?v=kBhloogDyCI&t=399s)
+
 
 ## :two::four: 24. Forensics(Medium) Stolen FooTPrints
 
