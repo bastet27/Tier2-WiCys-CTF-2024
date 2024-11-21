@@ -60,8 +60,13 @@ Hydra was able to quicky find a password for the admin account.
 Trying that password on the web page, was able to get the flag.
 
 ### Notes:
+This task emphasized the importance of understanding how login forms work and how tools like Hydra can automate brute-forcing attempts. It was a good reminder of why secure passwords are essential.
 
-This one was suprisingly more difficult than I thought, and it was just the first challenge.
+Tools Used:
+- Hydra: For brute-forcing the login.
+- Browser Developer Tools: To inspect the login form.
+
+#### Resources:
 https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/
 
 ## :three: 3. Web Exploitation(Easy) Endpoint
@@ -94,8 +99,10 @@ Gobuster identified the following directories:
 I tried each one and was able to find the flag in one of the directories.
 
 ### Notes
+Directory enumeration is a crucial step when dealing with hidden paths in web applications. This task reminded me of the importance of using tools like gobuster to automate the process.
+
 Tools Used:
-Gobuster - Directory and file enumeration.
+- Gobuster: For directory enumeration.
 
 ## :four: 4. Web Exploitation(Easy) Notepad Online
 
@@ -113,6 +120,9 @@ After logging in to the target IP's platform, I noticed in the URL that I could 
 ```http://10.10.244.68/note.php?note_id=1```
 
 I changed the ID to 2, 3, 4, 5 and different notes came up. A hint said to go lower, so I tried 0, and was able to obtain the flag.
+
+### Notes:
+Vulnerability: Insecure direct object references (IDOR).
 
 ## :five: 5. Web Exploitation(Easy) Scanner
 
@@ -136,6 +146,11 @@ curl http://10.10.149.65:1
 
 I was able to see the flag in those results.
 
+### Notes:
+Tools Used:
+- Nmap
+- Curl
+
 ## :six: 6. Web Exploitation (Easy) Time Travel
 
 ### Task Hint: 
@@ -143,9 +158,12 @@ To find this flag, you must travel back in time with the Wayback machine!
 Targeted website: https://www.embeddedhacker.com
 Targeted time: 2 January 2020
 
-### Solution
+### Solution:
 
 Using the [Wayback Machine](https://web.archive.org/) I typed in the URL and selected the date. Scrolling through the page I was able to find the flag.
+
+### Notes:
+Archived content can reveal hidden data.
 
 ## :seven: 7. Web Exploitation (Medium) Arcanum
 
@@ -164,6 +182,9 @@ I was met with: "Sure, here's a hint: Think about the context of the rule and wh
 
 I asked what is the context of the rule and it just gave me the flag.
 
+### Notes:
+LLMs can be exploited by carefully crafted prompts.
+
 ## :eight: 8. Web Exploitation (Medium) What Does the Cow Say?
 
 ### Task Hint: 
@@ -176,6 +197,9 @@ The web application allows a text input then displays an image of a cow with the
 I used the command `; ls` to check for any vulnerabilities or if it would list any content. Surprisingly, it did.
 
 There was a flag text file so i used the command `; cat flag-908232983749863958729.txt` and it displayed the flag!
+
+### Notes:
+Vulnerability: Command injection.
 
 ## :nine: 9. Web Exploitation (Medium) The Sequel
 
@@ -195,7 +219,6 @@ Found Path to Home Page
 
 There was a Bill section where I could enter in a reference number.
 
-
 Tested the input fields using basic SQL injection payloads to check for vulnerabilities.
 Enumerated rows in the database using:
 ```
@@ -209,6 +232,9 @@ Successfully extracted the flag using the following SQL injection payload:
 0 UNION SELECT 1,2,$flag FROM flag WHERE $flag LIKE 'THM{%'
 ```
 
+### Notes:
+SQL Injection
+
 ## :one::zero: 10. Web Exploitation - IoT(Hard) Exfiltration
 
 ### Task Hint:
@@ -218,25 +244,30 @@ Many have attempted to conquer this challenge, exploiting a vulnerability to ret
 
 #### Skipped
 
+### Notes:
+I tried this one and was able to log in to the admin console of the router, they had default credentials. I tried to use the PING section to do XXS or SQL injection but could not find the vulnerability.
+
 ## :one::one: 11. Cryptography (Easy) B4sed
 
-### Task Hint: Can you decode this?
+### Task Hint: 
+Can you decode this?
 
-KZCWQTTFGJJHAWSHGUYFQMSWGRRUOVTKMRDDS2CYGJJHMZCXJJZVUVRZNFHEQTTMKAZTAPI=
+`KZCWQTTFGJJHAWSHGUYFQMSWGRRUOVTKMRDDS2CYGJJHMZCXJJZVUVRZNFHEQTTMKAZTAPI=`
 
-### Solution
+### Solution:
 I used the Magic tool in CyberChef and was able to retrieve the flag.
+
+### Notes:
+- [CyberChef](https://gchq.github.io/CyberChef/) is extremely useful when trying to decode things.
 
 ## :one::two: 12. Cryptography (Easy) Exam
 
-Task Hint: You didn’t finish studying for your SANS WiCyS exam because you were too busy pwning TryHackMe boxes. Before the exam starts, you tell your friend Gonzo that you need his help.
-
+Task Hint: 
+You didn’t finish studying for your SANS WiCyS exam because you were too busy pwning TryHackMe boxes. Before the exam starts, you tell your friend Gonzo that you need his help.
 Quick on his feet, Gonzo devises a genius plan: He will encrypt a message and send it to you. That way, if you get caught, the teacher will have no proof you’re cheating. Genius!
-
 During the exam,  Gonzo notices your distress signal and sends you this message:
 
-TAe1a_H{nwr_c2_c4}Mss_3b
-
+`TAe1a_H{nwr_c2_c4}Mss_3b`
 But, with all the stress from the exam, you forgot the decryption key. You remember Gonzo mentioning a rail. Can you figure it out before time runs out?
 
 ### Solution
@@ -244,6 +275,10 @@ But, with all the stress from the exam, you forgot the decryption key. You remem
 This looks like it is using a Rail Fence Cipher.
 
 Using dCode I was able to solve the flag.
+
+### Notes:
+Tools Used:
+- [dCode](https://www.dcode.fr/rail-fence-cipher)
 
 ## :one::three: 13. Cryptography (Easy) Exam 2
 
@@ -255,13 +290,17 @@ Although he admires your creativity, he kindly reminds you that he is a SANS ins
 The end-of-year exams arrive, and this time, you are confident that no one, not even your SANS instructor, can crack your encryption.
 During the exam, Gonzo sends you the following encrypted message:
 
-FHF{Hfewxyk_mrx_i_u_o_a_t}
+`FHF{Hfewxyk_mrx_i_u_o_a_t}`
 
 Download the encryption script using the AttackBox from this URL `http://<MACINE_IP/math2.py` and determine how to decrypt the message.
 
 ### Solution
 
 Taking a look at the encryption script, it looks like it uses a Vigenère Cipher.
+
+### Notes:
+Tools Used:
+- [dCdode](https://www.dcode.fr/vigenere-cipher)
 
 ## :one::four: 14. Cryptography (Medium) Exam 3
 
@@ -291,7 +330,7 @@ I reviewed the encryption script, which revealed:
 d = inverse(e, phi(n))
 where: phi(n) = (p - 1) * (q - 1)
 
-To proceed, I needed to factorize n to obtain p and q.
+I needed to factorize n to obtain p and q.
 
 I visited [FactorDB](https://factordb.com/).
 I entered the value of n from the encryption script.
@@ -310,13 +349,13 @@ Using the values of n, e, p, and q, I performed the decryption on [dCode’s RSA
 The decryption showed on the left side of dCode.
 
 ### Notes:
-Tools Used:
-FactorDB: Used to factorize n and retrieve the prime factors (p and q).
-Website: 
-dCode RSA Tool: Used to calculate phi(n), the private key (d), and decrypt the ciphertext.
-Website:
+This task was a great demonstration of RSA encryption and decryption. Factorization of n was the key to solving this challenge. It also highlighted why larger key sizes and quantum-safe algorithms are important for modern encryption.
 
-## :one::five: 15.Cryptography(Easy) CrackMyPass 1 
+Tools Used:
+- FactorDB: Used to factorize n and retrieve the prime factors (p and q).
+- dCode RSA Tool: Used to calculate phi(n), the private key (d), and decrypt the ciphertext.
+
+## :one::five: 15. Cryptography(Easy) CrackMyPass 1 
 
 ### Task Hint:
 We got a password hash leaked from a website's database. All we know is that the website uses MD5. Can you recover the original password?
@@ -332,6 +371,13 @@ I then used John the Ripper to figure out the answer.
 ```
 john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
 ```
+
+### Notes
+This task was a simple introduction to password cracking using MD5 hashes. It demonstrated how weak passwords in public wordlists like RockYou can be easily cracked.
+
+Tools Used:
+- John the Ripper: For cracking the MD5 hash.
+- RockYou Wordlist: For generating password candidates.
 
 ## :one::six: 16. Cryptography(Medium) CrackMyPass 2
 
@@ -394,6 +440,11 @@ if password_found:
 else:
     print("Password not found.")
 ```
+### Notes:
+This task made me realize how creative passwords can still be predictable if they’re based on common themes like colors. By using Python and generating combinations, I was able to test all possibilities pretty quickly. It’s another reminder of why it’s so important to create unique and unpredictable passwords.
+
+Tools Used:
+- Python (hashlib library): For generating hash variations.
 
 ## :one::seven: 17. Cryptography(Hard) CrackMyPass 3
 
@@ -448,12 +499,13 @@ else:
 ```
 
 ### Notes:
+
 Tools Used:
 - Python: To automate hash testing and password generation.
 - hashlib: Used for SHA-1 hashing.
 - itertools.permutations: Generated all two-color combinations.
 - Color List: Included standard and eccentric color names.
-- 
+
 ## :one::eight: 18. Forensics (Easy) Eggciting Recovery
 
 ### Task Hint:
@@ -480,10 +532,11 @@ printf '\x89PNG\r\n\x1a\n' | dd of=egg.png bs=1 conv=notrunc
 The file then was no longer corrupted. I opened the image and it was a QR code with the flag.
 
 ### Notes: 
-Tools Used
-xxd: For analyzing and editing the hexadecimal structure of the file.
-dd: To overwrite the file's header.
-file: To identify file types.
+
+Tools Used:
+- xxd: For analyzing and editing the hexadecimal structure of the file.
+- dd: To overwrite the file's header.
+- file: To identify file types.
 
 ## :one::nine: 19. Forensics(Easy) FooTPrints
 
@@ -500,13 +553,12 @@ I opened wireshark and looked through the files. I filtered for `ftp` and was ab
 
 ### Notes:
 Tools Used:
-Wireshark: To filter and analyze FTP traffic.
+- Wireshark: To filter and analyze FTP traffic.
 
 ## :two::zero: 20. Forensics(Easy) Maldoom's Revenge
 
 ### Task Hint:
 Lexie, a Recruitment Specialist, received an unusual resume from a candidate applying for one of the job openings. Can you assist her in checking the application file?
-
 
 Note: The artefact is stored in the Desktop directory.
 
@@ -521,6 +573,13 @@ The Macro Code:
  c. Has a Base64-encoded Powershell payload 
 
 I copied the Base64-encoded payload string and used [Base64 Decode](https://www.base64decode.org) and was able to find the flag.
+
+### Notes:
+This task showed how macros can hide malicious payloads. Inspecting documents for suspicious code is essential in preventing malware infections.
+
+Tools Used:
+- Microsoft Word: For inspecting macros.
+- CyberChef: For decoding the Base64 payload.
 
 ## :two::one: 21. Forensics(Easy) Phishy
 
@@ -539,7 +598,7 @@ grep "THM{" "Password Expired - Action Alert.eml"
 
 ### Notes:
 Tools Used
-grep: Command-line tool used to search for specific patterns within text files.
+- grep: Command-line tool used to search for specific patterns within text files.
 
 ## :two::two: Forensics (Medium) Chat Bubble
 
@@ -579,7 +638,8 @@ The extraction created a directory `_ChatBubble.pdf.extracted`. Inside, I decomp
 
 Since the PNG wasn’t automatically extracted, I used dd to manually extract it:
 
-```dd if=ChatBubble.pdf of=4197.png bs=1 skip=16791
+```
+dd if=ChatBubble.pdf of=4197.png bs=1 skip=16791
 ```
 This created a file named 4197.png.
 
@@ -590,13 +650,13 @@ xdg-open 4197.png
 
 ### Notes:
 Tools Used:
-file – To determine the file type.
-binwalk – To analyze and extract embedded objects.
-dd – To manually extract the PNG file.
-xdg-open – To view the PNG file.
-strings – To inspect decompressed Zlib streams.
+- file – To determine the file type.
+- binwalk – To analyze and extract embedded objects.
+- dd – To manually extract the PNG file.
+- xdg-open – To view the PNG file.
+- strings – To inspect decompressed Zlib streams.
 
-`## :two::three: 23. Forensics (Medium) DiNoSaur Tunnel
+## :two::three: 23. Forensics (Medium) DiNoSaur Tunnel
 
 ### Task Hint:
 The attackers found a way to create a tunnel as big as a dinosaur, allowing them to exfiltrate vast amounts of data from our network without detection.
@@ -621,19 +681,18 @@ tshark -r dinosaur.pcapng -Y "dns" -T fields -e dns.qry.name | uniq | cut -d. -f
 ```
 
 ### Notes:
-
+DNS tunneling is a covert way to exfiltrate data. This task demonstrated how analyzing DNS queries can reveal hidden data transfers. It was a great learning opportunity to practice decoding and reconstructing data.
 
 Tools Used:
-Tshark: For packet capture analysis and extracting DNS query data.
-Cut: To extract specific fields from the DNS query strings.
-Xxd: To convert hexadecimal data back into binary.
-File: To identify the type of the extracted file.
-Xdg-open: To open and view the PDF.
-Linux CLI: For all commands and file manipulation.
+- Tshark: For packet capture analysis and extracting DNS query data.
+- Cut: To extract specific fields from the DNS query strings.
+- Xxd: To convert hexadecimal data back into binary.
+- File: To identify the type of the extracted file.
+- Xdg-open: To open and view the PDF.
+- Linux CLI: For all commands and file manipulation.
 
 Referenced YouTube Video:
 [DNS Tunneling Explained: Threats & Detection](https://www.youtube.com/watch?v=kBhloogDyCI&t=399s)
-
 
 ## :two::four: 24. Forensics(Medium) Stolen FooTPrints
 
@@ -653,10 +712,10 @@ Open the image with xdg-open memories.png to visually inspect for the flag.
 
 ### Notes:
 Tools Used:
-Wireshark: To analyze the PCAP file, apply filters (ftp, ftp-data), and follow TCP streams.
-Strings: To extract human-readable text from the binary file.
-grep: To filter strings and search for the flag pattern.
-xdg-open: To visually inspect the exported image.
+- Wireshark: To analyze the PCAP file, apply filters (ftp, ftp-data), and follow TCP streams.
+- Strings: To extract human-readable text from the binary file.
+- grep: To filter strings and search for the flag pattern.
+- xdg-open: To visually inspect the exported image.
 
 ## :two::five: 25. Forensics(Hard) Mayhem
 
@@ -682,6 +741,8 @@ The attacker printed a flag for us to see. What is that flag?
 What is the final flag found inside important file the attacker found?
 
 ### Notes:
+This one was quite difficult. I was able to see some transferred data in the pcap file but I couldn't crack much of it. I plan to look into some THM rooms regarding this one.
+
 Tools Used:
 
 #### Skipped
@@ -701,6 +762,11 @@ I used exiftool but did not find any GPS metadata.
 I used google reverse image search and was able to find the answer.
 
 ### Notes:
+This task demonstrated how useful reverse image search can be when metadata is unavailable. It’s a powerful OSINT technique for verifying image origins.
+
+Tools Used:
+- exiftool: For metadata analysis.
+- Google Reverse Image Search: To identify the photo's location.
 
 ## :two::seven: 27. OSINT(Easy) Operation Slither 1
 
@@ -713,14 +779,15 @@ Find any information related to the leader of the Sneaky Viper group.
 
 ### Solution:
 
-I googled the username provided and was able to find a Threads account. I looekd through their posts and replies and found an encoded message.
-
-I used CyberChef Magic tool to decode the message and obtain the flag.
+Searched the provided username on multiple platforms, starting with Google.
+Found a Threads account for the username.
+Examined their posts and replies, identifying an encoded message.
+Decoded the message using CyberChef to retrieve the flag.
 
 ### Notes:
 Tools Used:
-OSINT
-CyberChef
+- OSINT
+- CyberChef
 
 ## :two::eight: OSINT(Easy) Operation Slither 2
 
@@ -748,9 +815,17 @@ Follow the crumbs from the first challenge and hunt any information related to t
 
 ### Solution:
 
-In the first Operation Slither Task, I was able to find the second operator. I was a bit stuck on trying to find other accounts for them. I ended up using the bing search engine and was able to find a SoundCloud playlist page. I looked through the different URL's for each song and in one of the songs descriptions was another encoded message.
+Continued searching based on information found in Operation Slither 1.
+Located the second operator’s SoundCloud playlist through Bing search.
+Checked the descriptions of each song in the playlist and found an encoded message.
+Used CyberChef to decode the message and retrieve the flag.
 
 ### Notes:
+This task was fun because it involved connecting dots from multiple sources. Using alternative search engines like Bing provided different results that led to success. It's also good to use multiple search engines.
+
+Tools Used:
+- Bing: For locating additional accounts.
+- CyberChef: For decoding the message.
 
 ## :two:nine: 29. OSINT(Medium) Operation Slither 3
 
@@ -814,6 +889,8 @@ Using the --config option of OpenVPN, I provided the path to /root/flag.txt as a
 SUID Binary Misconfiguration: Setting the SUID bit on binaries like OpenVPN can lead to privilege escalation if the application has functionality to read or execute files, as it inherits root permissions during execution.
 Single Command Escalation: The ability to access sensitive files like `/root/flag.txt` without complex steps demonstrates why caution is necessary when using the SUID bit.
 
+Tools Used:
+- Linux CLI: For analyzing file permissions and executing the SUID binary.
 
 ## :three::one: 31. Linux Command Line(Easy) Archives
 
@@ -912,9 +989,9 @@ The Webmin service was outdated (version 1.890) and had a known backdoor vulnera
 SSL mode was required for Webmin, so the SSL option in Metasploit had to be enabled.
 Ensuring correct configuration of LHOST, RHOSTS, and ports (RPORT/LPORT) was crucial for successful exploitation.
 #### Tools Used:
-Nmap: For initial reconnaissance and service detection.
-Metasploit Framework: For exploiting the Webmin backdoor vulnerability.
-Exploit Used: `exploit/linux/http/webmin_backdoor`
+- Nmap: For initial reconnaissance and service detection.
+- Metasploit Framework: For exploiting the Webmin backdoor vulnerability.
+- Exploit Used: `exploit/linux/http/webmin_backdoor`
 
 ## :three::three: 33. Boot2Root(Medium) A Window Opens
 
@@ -970,10 +1047,9 @@ Lesson Learned: Leaving SMBv1 enabled on systems or failing to patch known vulne
 Privilege Escalation: Exploiting EternalBlue provided NT AUTHORITY\SYSTEM, allowing full control over the system.
 
 Tools Used:
-Nmap - To identify open ports and running services.
-Metasploit Framework - For SMB exploitation (EternalBlue).
-Windows Shell - To navigate the filesystem and read the flag.
-
+- Nmap - To identify open ports and running services.
+- Metasploit Framework - For SMB exploitation (EternalBlue).
+- Windows Shell - To navigate the filesystem and read the flag.
 
 ## :three::four: 34. Boot2Root (Insane) Contrabando
 
@@ -984,3 +1060,5 @@ Are you up for it?
 ### Solution:
 
 ### Notes:
+
+I didn't even try this one, i wish I could have opened it. 
